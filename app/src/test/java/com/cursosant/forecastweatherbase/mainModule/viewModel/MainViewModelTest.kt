@@ -3,6 +3,7 @@ package com.cursosant.forecastweatherbase.mainModule.viewModel
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.cursosandroidant.historicalweatherref.getOrAwaitValue
 import com.cursosant.forecastweatherbase.common.dataAccess.WeatherForecastService
+import com.cursosant.forecastweatherbase.mainModule.viewModel.common.dataAccess.JSONFileLoader
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.hamcrest.MatcherAssert.assertThat
@@ -110,6 +111,19 @@ class MainViewModelTest{
         )
         val result = mainViewModel.getResult().getOrAwaitValue()
         assertThat(result.sys.country , `is`("AR"))
+    }
+
+    //Una prueba de este estilo es muy util para comprobar cosas cuando las apis cambian
+    @Test
+    fun checkWeatherSizeRemoteWithLocalTest() = runTest {
+        mainViewModel.getWeatherAndForecast(
+            -34.127372, -63.390917,
+            "7e036470c5dbb57040957bdb616a89b1", "metric", "es"
+        )
+        val remoteResult = mainViewModel.getResult().getOrAwaitValue()
+        val localResult = JSONFileLoader().loadApiResponseEntity("api_response_weather_succes.json")
+        assertThat(localResult.weather.size , `is`(remoteResult.weather.size))
+        assertThat(localResult.timezone, `is`(remoteResult.timezone))
     }
 
 }

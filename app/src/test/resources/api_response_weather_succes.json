@@ -1,0 +1,44 @@
+{
+  "coord": {
+    "lon": -63.54,
+    "lat": -34.1254
+  },
+  "weather": [
+    {
+      "id": 802,
+      "main": "Clouds",
+      "description": "scattered clouds",
+      "icon": "03d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 302.12,
+    "feels_like": 300.89,
+    "temp_min": 302.12,
+    "temp_max": 302.12,
+    "pressure": 1011,
+    "humidity": 28,
+    "sea_level": 1011,
+    "grnd_level": 994
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 5.18,
+    "deg": 6,
+    "gust": 8.04
+  },
+  "clouds": {
+    "all": 25
+  },
+  "dt": 1736423854,
+  "sys": {
+    "country": "AR",
+    "sunrise": 1736413975,
+    "sunset": 1736465364
+  },
+  "timezone": -10800,
+  "id": 3852468,
+  "name": "Laboulaye",
+  "cod": 200
+}
